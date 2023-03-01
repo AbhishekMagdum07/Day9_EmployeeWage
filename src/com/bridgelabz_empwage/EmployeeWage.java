@@ -3,33 +3,42 @@ package com.bridgelabz_empwage;
 import java.util.Random;
 public class EmployeeWage {
     Random random = new Random();
-    void wagesForMonth() {
+    void daysOrWorkingHOurs() {
         int fullTime = 0;
         int partTime = 1;
-        int empHour = 0;
+        int empHour;
+        int totalWorkingDays = 0;
+        int totalEmpHour = 0;
         int wagePerHr = 20;
         int empWage = 0;
-        int totalWorkingDays = 20; // Total working days in a month.
-        int attendance = random.nextInt(3);
+        int maxWorkingDays = 20; // Maximum working days in a month.
+        int maxWorkingHours = 100; // Maximum working hours in a month
 
-        if (attendance == fullTime) {
-            empHour = 8;
-            System.out.println("Employee is doing FullTime job");
-        } else if (attendance == partTime) {
-            empHour = 4;
-            System.out.println("Employee is doing PartTime Job");
-        } else {
-            empHour = 0;
-            System.out.println("Employee is Absent");
+        while (totalEmpHour < maxWorkingHours && totalWorkingDays < maxWorkingDays) {
+            totalWorkingDays++;
+            int attendance = random.nextInt(3);
+
+            if (attendance == fullTime) {
+                empHour = 8; // fullTime job.
+
+            } else if (attendance == partTime) {
+                empHour = 4; // partTime job.
+
+            } else {
+                empHour = 0; // employee is absent.
+
+            }
+
+            totalEmpHour += empHour;
         }
+        System.out.println("Total Working Days = " + totalWorkingDays + " && Total Working Hours = " + totalEmpHour);
 
-        empWage = empHour * wagePerHr * totalWorkingDays;
+        empWage = totalEmpHour * wagePerHr;
 
-        System.out.println("Employee wage for a month is = " + empWage);
+        System.out.println("Total Employee Wage is   = " + empWage);
     }
-
     public static void main(String[] args) {;
         EmployeeWage runner = new EmployeeWage();
-        runner.wagesForMonth();
+        runner.daysOrWorkingHOurs();
     }
 }

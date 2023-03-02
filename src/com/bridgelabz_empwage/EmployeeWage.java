@@ -1,6 +1,7 @@
 package com.bridgelabz_empwage;
 
 import java.util.Random;
+
 public class EmployeeWage {
     Random random = new Random();
     int fullTime = 0;
@@ -8,13 +9,11 @@ public class EmployeeWage {
     int empHour;
     int totalWorkingDays = 0;
     int totalEmpHour = 0;
-    int wagePerHr = 20;
     int empWage = 0;
-    int maxWorkingDays = 20; // Maximum working days in a month.
-    int maxWorkingHours = 100; // Maximum working hours in a month
 
-    void classVariables() {
 
+    void companyWages(String companyName, int wagePerHr,int maxWorkingHours, int maxWorkingDays) {
+        System.out.println("Company Name = "+companyName);
 
         while (totalEmpHour < maxWorkingHours && totalWorkingDays < maxWorkingDays) {
             totalWorkingDays++;
@@ -33,14 +32,17 @@ public class EmployeeWage {
 
             totalEmpHour += empHour;
         }
-        System.out.println("Total Working Days = " + totalWorkingDays + " && Total Working Hours = " + totalEmpHour);
-
         empWage = totalEmpHour * wagePerHr;
 
         System.out.println("Total Employee Wage is   = " + empWage);
+        System.out.println("============================================================");
+
     }
-    public static void main(String[] args) {;
-        EmployeeWage runner = new EmployeeWage();
-        runner.classVariables();
+    public static void main(String[] args) {
+
+        EmployeeWage runer = new EmployeeWage();
+        runer.companyWages("Tata",20,120,22);
+        runer.companyWages("Maruti",22,100,21);
+        runer.companyWages("Mahindra",18,105,23);
     }
 }
